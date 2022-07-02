@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react"
+import styled from "styled-components"
+import Loader from "../components/Loader"
 
 export default function Home() {
   const API_KEY = process.env.GATSBY_KEY
@@ -29,8 +31,12 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    cards ? console.log(cards) : console.log("loading")
+    cards.length > 0 ? console.log(cards) : console.log("loading...")
   }, [cards])
 
-  return <div>Hello world!</div>
+  return (
+    <div className="App">
+      <h1>Hello World</h1>
+    </div>
+  )
 }

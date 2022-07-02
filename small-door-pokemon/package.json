@@ -15,8 +15,11 @@
   },
   "dependencies": {
     "gatsby": "^4.17.2",
+    "gatsby-plugin-manifest": "^4.17.0",
+    "gatsby-plugin-offline": "^5.17.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
