@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import CardList from "../components/CardList"
 import Loader from "../components/Loader"
+import SearchFrom from "../components/SearchFrom"
+import Layout from "../components/Layout"
 
 export default function Home() {
   const API_KEY = process.env.GATSBY_KEY
@@ -35,8 +38,11 @@ export default function Home() {
   }, [cards])
 
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Layout>
+      <div className="App">
+        {/* <SearchFrom setCards={setCards} /> */}
+        <CardList cards={cards} />
+      </div>
+    </Layout>
   )
 }

@@ -7,6 +7,16 @@
 module.exports = {
   /* Your site config here */
   plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -21,4 +31,10 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
   ],
+  siteMetadata: {
+    title: "Matt's Pokémon Project",
+    description: "Project for Small Door Interview",
+    copyright: "matthieu fernandez @ 2022",
+    contact: "mrmatthieufernandez@gmail.com",
+  },
 }

@@ -6,14 +6,16 @@ export default function Loader() {
   return (
     <Wrapper>
       <Logo src={spinner} alt="poke ball"></Logo>
+      <h5>building deck</h5>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 8%;
+  height: 8%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
