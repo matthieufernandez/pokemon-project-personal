@@ -6,14 +6,14 @@ export default function Loader() {
   return (
     <Wrapper>
       <Logo src={spinner} alt="poke ball"></Logo>
-      <h5>building deck</h5>
+      <h5 style={{ marginTop: "10px" }}>building deck</h5>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  width: 8%;
-  height: 8%;
+  width: 50%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,8 +22,9 @@ const Wrapper = styled.div`
 `
 
 const Logo = styled.img`
-  height: 53%;
-  width: 53%;
+  height: 4%;
+  width: 4%;
+
   animation: rotating 2.3s linear infinite;
 
   @keyframes rotating {

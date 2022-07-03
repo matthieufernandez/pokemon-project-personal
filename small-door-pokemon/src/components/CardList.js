@@ -5,16 +5,49 @@ import CardModal from "./CardModal"
 
 import Loader from "./Loader"
 
-function CardList({ cards }) {
+function CardList() {
+  const API_KEY = process.env.GATSBY_KEY
+  const randomPage = Math.floor(Math.random() * 250 + 1)
+
+  const [cards, setCards] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [cardData, setCardData] = useState(null)
 
+  useEffect(() => {
+    async function getCards() {
+      try {
+        await fetch(
+          `https://api.pokemontcg.io/v2/cards/?page=${randomPage}&pageSize=60`,
+          {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+              "X-Api-Key": API_KEY,
+            },
+          }
+        )
+          .then(res => res.json())
+          .then(data => setCards(data.data))
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    getCards()
+  }, [])
+
+  useEffect(() => {
+    cards.length > 0 ? console.log(cards) : console.log("loading...")
+  }, [cards])
+
   function handleClick(e, card) {
     e.preventDefault()
+    setModalOpen(true)
     setCardData(card)
   }
 
-  useEffect(() => {}, [cardData])
+  useEffect(() => {
+    console.log(cardData)
+  }, [cardData])
 
   return (
     <>
@@ -23,11 +56,10 @@ function CardList({ cards }) {
       ) : (
         <div className={cardlist}>
           {cards.map(card => (
-            <div className={cardarea}>
+            <div key={card.id} className={cardarea}>
               <LazyLoadImage
-                key={card.id}
                 onClick={e => handleClick(e, card)}
-                className="cardsmall"
+                className={cardsmall}
                 style={{
                   margins: "10px",
                   padding: "10px",
@@ -42,7 +74,11 @@ function CardList({ cards }) {
         </div>
       )}
 
-      <CardModal open={modalOpen}>Some stuff</CardModal>
+      <CardModal
+        cardData={cardData}
+        setModalOpen={setModalOpen}
+        modalOpen={modalOpen}
+      />
     </>
   )
 }

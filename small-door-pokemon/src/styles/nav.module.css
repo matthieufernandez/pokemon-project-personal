@@ -1,0 +1,12 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    display: inline-block;
+    background: #C4167B;
+    padding: 10px 50px;
+    border-radius: 10px;
+    font-weight: 500;
+}
