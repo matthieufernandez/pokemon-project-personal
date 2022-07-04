@@ -1,7 +1,6 @@
 @media only screen and (max-width: 900px) {
     .modal {
     position: fixed;
-    font-size: 10px;
     max-height: 80%;
     min-width: 70%;
     overflow-y: auto;
@@ -11,14 +10,34 @@
     }
 
     .cardImage {
-        max-width: 150px;
+        max-width: 200px;
         object-fit: contain;
+        align-self: center;
     }
 
     .cardMain {
         display: flex;
         flex-direction: column;
     }
+
+    .cardHeader {
+        gap: 15px;
+    }
+
+    .cardHeader h2 {
+        font-size: 12px;
+    }
+
+    .cardHeader h4 {
+        font-size: 10px;
+        font-weight: 200;
+    }
+
+    h5 {
+        font-size: 10px;
+    }
+
+
 }
 
 .modal {
@@ -31,10 +50,16 @@
     padding: 50px;
     border-radius: 5px;
     z-index: 1000;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
-.cardImage {
+.modal::-webkit-scrollbar {
+    width: 0px; 
+    height: 0px; 
+  }
 
+.cardImage {
     object-fit: contain;
 }
 
@@ -79,12 +104,30 @@
 .cardHeader {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+
+    gap: 15px;
     margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color:rgba(209, 191, 210, 0.2);
+    border-radius: 5px;
+}
+
+.cardHeader p {
+    font-size: 12px;
+    font-weight: 800;
+
 }
 
 .nameSection {
     display: flex;
     flex-direction: column;
+}
+
+.footerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cardMain {
@@ -97,15 +140,51 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 10px;
 
 }
 
 .cardFooter {
     display: flex;
+    justify-content: space-evenly;
+    padding: 10px 15px;
+    background-color:rgba(209, 191, 210, 0.2);
+    border-radius: 5px;
+    gap: 15px;
+
 }
 
 .cardFlavorText {
     font-size: 12px;
     font-style: italic;
-    margin-top: 20%;
+    margin-top: 15px;
+    background-color: rgb(196, 22, 123, .8);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.attacks {
+    padding: 10px;
+    background-color: rgba(198, 10, 120, 0.573);
+    border-radius: 5px;
+}
+
+.attacks h5 {
+    margin-top: 10px;
+    font-weight: 200;
+}
+
+.abilities {
+    padding: 10px;
+    background-color: rgba(196, 22, 124, 0.241);
+    border-radius: 5px;
+    align-self: center;
+}
+
+.abilities h4 {
+    margin-bottom: 10px;
+}
+
+.abilities h5 {
+    font-weight: 200;
 }

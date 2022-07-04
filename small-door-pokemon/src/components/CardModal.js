@@ -11,6 +11,9 @@ import {
   closeButton,
   nameSection,
   cardFlavorText,
+  attacks,
+  abilities,
+  footerSection,
 } from "../styles/modal.module.css"
 
 function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
@@ -25,6 +28,8 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
   }
 
   if (!modalOpen) return null
+
+  //trainer cards can have attacks
 
   return (
     <>
@@ -44,8 +49,15 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
                 src={cardData.images.small}
                 alt={"an image of the card: " + cardData.name}
               />
-              {cardData.rules && <p>{cardData.rules}</p>}
-              {cardData.flavortext && <p>{cardData.flavortext}</p>}
+              <div className={abilities}>
+                {cardData.rules &&
+                  cardData.rules.map(rule => (
+                    <p className={cardInfoSection}>{rule}</p>
+                  ))}
+                {cardData.flavortext && (
+                  <p className={cardFlavorText}>{cardData.flavortext}</p>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -56,6 +68,13 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
             <div className={cardHeader}>
               <h2>{cardData.name}</h2>
               {cardData.hp && <h4>HP: {cardData.hp}</h4>}
+              {cardData.subtypes &&
+                cardData.subtypes.map((type, index) => (
+                  <div className={nameSection} key={index}>
+                    <h6>Type: </h6>
+                    <h4>{type}</h4>
+                  </div>
+                ))}
             </div>
             <div className={cardMain}>
               <img
@@ -64,9 +83,29 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
                 alt={"an image of the card: " + cardData.name}
               />
               <div className={cardInfoSection}>
-                {cardData.rules.map(rule => (
-                  <p>{rule}</p>
-                ))}
+                <div className={abilities}>
+                  {cardData.rules.map((rule, index) => (
+                    <h5 key={index}>{rule}</h5>
+                  ))}
+                </div>
+                {cardData.abilities &&
+                  cardData.abilities.map((ability, index) => (
+                    <div key={index} className={abilities}>
+                      {ability.name && (
+                        <h4 className="abilityName">Ability: {ability.name}</h4>
+                      )}
+                      <h5 className="abilityText">{ability.text}</h5>
+                    </div>
+                  ))}
+                {cardData.attacks &&
+                  cardData.attacks.map((attack, index) => (
+                    <div className={attacks} key={index}>
+                      <h4>{attack.name}</h4>
+                      {attack.damage && <h6>Damage: {attack.damage}</h6>}
+                      <h6>Energy Cost: {attack.convertedEnergyCost}</h6>
+                      <h5>{attack.text}</h5>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
@@ -80,13 +119,27 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
                 <h2>{cardData.name}</h2>
                 <h4>HP: {cardData.hp}</h4>
               </div>
-              {cardData.types.map(type => (
-                <p>Type: {type}</p>
-              ))}
+              <div className={nameSection}>
+                {cardData.types &&
+                  cardData.types.map(type => (
+                    <>
+                      <h6>Type: </h6>
+                      <h4>{type}</h4>
+                    </>
+                  ))}
+              </div>
               {cardData.evolvesFrom && (
-                <p>evolves from: {cardData.evolvesFrom}</p>
+                <div className={nameSection}>
+                  <h6>Evolves From: </h6>
+                  <h4>{cardData.evolvesFrom}</h4>
+                </div>
               )}
-              {cardData.evolvesTo && <p>evolves to: {cardData.evolvesTo[0]}</p>}
+              {cardData.evolvesTo && cardData.evolvesTo && (
+                <div className={nameSection}>
+                  <h6>Evolves To: </h6>
+                  <h4>{cardData.evolvesTo[0]}</h4>
+                </div>
+              )}
             </div>
             <div className={cardMain}>
               <img
@@ -97,49 +150,53 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
               <div className={cardInfoSection}>
                 {cardData.rules &&
                   cardData.rules.map((rule, index) => (
-                    <p key={index}>{rule}</p>
+                    <div className={abilities}>
+                      <h5 key={index}>{rule}</h5>
+                    </div>
                   ))}
                 {cardData.abilities &&
                   cardData.abilities.map((ability, index) => (
-                    <div key={index}>
-                      <h5 className="abilityName">Ability: {ability.name}</h5>
-                      <span className="abilityText">{ability.text}</span>
+                    <div key={index} className={abilities}>
+                      {ability.name && (
+                        <h4 className="abilityName">Ability: {ability.name}</h4>
+                      )}
+                      <h5 className="abilityText">{ability.text}</h5>
                     </div>
                   ))}
                 {cardData.attacks &&
                   cardData.attacks.map((attack, index) => (
-                    <div className="attacks" key={index}>
-                      <br />
-                      <h5>{attack.name}</h5>
+                    <div className={attacks} key={index}>
+                      <h4>{attack.name}</h4>
                       {attack.damage && <h6>Damage: {attack.damage}</h6>}
-                      Energy Cost: {attack.convertedEnergyCost}
-                      <p>{attack.text}</p>
+                      <h6>Energy Cost: {attack.convertedEnergyCost}</h6>
+                      <h5>{attack.text}</h5>
                     </div>
                   ))}
-                <p className={cardFlavorText}>{cardData.flavorText}</p>
+                {cardData.flavorText && (
+                  <p className={cardFlavorText}>{cardData.flavorText}</p>
+                )}
               </div>
             </div>
             <div className={cardFooter}>
               {cardData.weaknesses &&
                 cardData.weaknesses.map(weakness => (
-                  <>
-                    <p>
-                      Weakness: {weakness.type}
-                      {weakness.value}
-                    </p>
-                  </>
+                  <div className={footerSection}>
+                    <h4>Weakness: {weakness.type}</h4>
+                    <h3>{weakness.value}</h3>
+                  </div>
                 ))}
               {cardData.resistances &&
                 cardData.resistances.map(resistance => (
-                  <>
-                    <p>
-                      Resistance: {resistance.type}
-                      {resistance.value}
-                    </p>
-                  </>
+                  <div className={footerSection}>
+                    <h4>Resistance: {resistance.type}</h4>
+                    <h3>{resistance.value}</h3>
+                  </div>
                 ))}
               {cardData.retreatCost && (
-                <p>retreat cost: {cardData.retreatCost.length}</p>
+                <div className={footerSection}>
+                  <h4>Retreat Cost: </h4>
+                  <h3>{cardData.retreatCost.length}</h3>
+                </div>
               )}
             </div>
           </div>

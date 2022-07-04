@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 import { cardlist, cardarea, cardsmall } from "../styles/cardslist.module.css"
 import CardModal from "./CardModal"
 
@@ -35,10 +36,6 @@ function CardList() {
     getCards()
   }, [])
 
-  useEffect(() => {
-    cards.length > 0 ? console.log(cards) : console.log("loading...")
-  }, [cards])
-
   function handleClick(e, card) {
     e.preventDefault()
     setModalOpen(true)
@@ -51,13 +48,14 @@ function CardList() {
 
   return (
     <>
-      {cards.length === 0 ? (
+      {cards.length < 60 ? (
         <Loader />
       ) : (
         <div className={cardlist}>
           {cards.map(card => (
             <div key={card.id} className={cardarea}>
-              <img
+              <LazyLoadImage
+                effect="blur"
                 onClick={e => handleClick(e, card)}
                 className={cardsmall}
                 style={{
