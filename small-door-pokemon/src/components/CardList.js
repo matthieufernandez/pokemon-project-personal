@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { LazyLoadImage } from "react-lazy-load-image-component"
 import { cardlist, cardarea, cardsmall } from "../styles/cardslist.module.css"
 import CardModal from "./CardModal"
 
@@ -22,6 +21,7 @@ function CardList() {
             method: "GET",
             headers: {
               "content-type": "application/json",
+              "Access-Control-Allow-Origin": "*",
               "X-Api-Key": API_KEY,
             },
           }
@@ -57,7 +57,7 @@ function CardList() {
         <div className={cardlist}>
           {cards.map(card => (
             <div key={card.id} className={cardarea}>
-              <LazyLoadImage
+              <img
                 onClick={e => handleClick(e, card)}
                 className={cardsmall}
                 style={{
@@ -65,8 +65,6 @@ function CardList() {
                   padding: "10px",
                 }}
                 src={card.images.small}
-                effect="blur"
-                visibleByDefault={false}
                 alt={"image of the pokemon card: " + card.name}
               />
             </div>
@@ -76,6 +74,7 @@ function CardList() {
 
       <CardModal
         cardData={cardData}
+        setCardData={setCardData}
         setModalOpen={setModalOpen}
         modalOpen={modalOpen}
       />
