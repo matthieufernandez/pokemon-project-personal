@@ -1,15 +1,36 @@
+@media only screen and (max-width: 900px) {
+    .modal {
+    position: fixed;
+    font-size: 10px;
+    max-height: 80%;
+    min-width: 70%;
+    overflow-y: auto;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+    }
+
+    .cardImage {
+        max-width: 150px;
+        object-fit: contain;
+    }
+
+    .cardMain {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #8033A4;
+    background: radial-gradient(at top left, #8033A4, #3f0659);
     border: 3px rgb(209, 191, 210) solid;
     padding: 50px;
     border-radius: 5px;
     z-index: 1000;
-    min-width: 50%;
-    min-height: 50%;
 }
 
 .cardImage {
@@ -30,7 +51,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    /* align-items: center; */
 }
 
 .cardInfo {
@@ -59,6 +79,7 @@
 .cardHeader {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 15px;
 }
 
 .nameSection {
@@ -86,4 +107,5 @@
 .cardFlavorText {
     font-size: 12px;
     font-style: italic;
+    margin-top: 20%;
 }

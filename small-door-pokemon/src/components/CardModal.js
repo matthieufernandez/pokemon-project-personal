@@ -16,7 +16,7 @@ import {
 function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
   useEffect(() => {
     document.addEventListener("keydown", detectKeyDown, true)
-  }, [])
+  })
 
   function detectKeyDown(e) {
     if (e.key === "Escape") {
@@ -37,10 +37,16 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
         {/* THIS MODAL DISPLAYS ENERGY CARDS */}
         {cardData.supertype === "Energy" && (
           <div className="energyCardDiv">
-            <h2>{cardData.name}</h2>
-            <img className={cardImage} src={cardData.images.small} />
-            {cardData.rules && <p>{cardData.rules}</p>}
-            {cardData.flavortext && <p>{cardData.flavortext}</p>}
+            <h2 className={cardHeader}>{cardData.name}</h2>
+            <div className={cardMain}>
+              <img
+                className={cardImage}
+                src={cardData.images.small}
+                alt={"an image of the card: " + cardData.name}
+              />
+              {cardData.rules && <p>{cardData.rules}</p>}
+              {cardData.flavortext && <p>{cardData.flavortext}</p>}
+            </div>
           </div>
         )}
 
@@ -51,10 +57,18 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
               <h2>{cardData.name}</h2>
               {cardData.hp && <h4>HP: {cardData.hp}</h4>}
             </div>
-            <img className={cardImage} src={cardData.images.small} />
-            {cardData.rules.map(rule => (
-              <p>{rule}</p>
-            ))}
+            <div className={cardMain}>
+              <img
+                className={cardImage}
+                src={cardData.images.small}
+                alt={"an image of the card: " + cardData.name}
+              />
+              <div className={cardInfoSection}>
+                {cardData.rules.map(rule => (
+                  <p>{rule}</p>
+                ))}
+              </div>
+            </div>
           </div>
         )}
 
@@ -75,7 +89,11 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
               {cardData.evolvesTo && <p>evolves to: {cardData.evolvesTo[0]}</p>}
             </div>
             <div className={cardMain}>
-              <img className={cardImage} src={cardData.images.small} />
+              <img
+                className={cardImage}
+                src={cardData.images.small}
+                alt={"an image of the card: " + cardData.name}
+              />
               <div className={cardInfoSection}>
                 {cardData.rules &&
                   cardData.rules.map((rule, index) => (
@@ -84,19 +102,17 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
                 {cardData.abilities &&
                   cardData.abilities.map((ability, index) => (
                     <div key={index}>
-                      <h5 className="abilityName">{ability.name}</h5>
+                      <h5 className="abilityName">Ability: {ability.name}</h5>
                       <span className="abilityText">{ability.text}</span>
-                      <p></p>
                     </div>
                   ))}
                 {cardData.attacks &&
                   cardData.attacks.map((attack, index) => (
                     <div className="attacks" key={index}>
+                      <br />
                       <h5>{attack.name}</h5>
-                      <span>
-                        Converted Energy Cost: {attack.convertedEnergyCost}
-                      </span>
-                      {attack.damage && <p>Damage: {attack.damage}</p>}
+                      {attack.damage && <h6>Damage: {attack.damage}</h6>}
+                      Energy Cost: {attack.convertedEnergyCost}
                       <p>{attack.text}</p>
                     </div>
                   ))}
