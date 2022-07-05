@@ -100,15 +100,15 @@
     }
 
     .cardHeader h2 {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .cardHeader h6 {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .cardHeader h4 {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 200;
     }
 
@@ -117,25 +117,26 @@
     }
 
     .cardFooter {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 200;
     }
 
     .cardFooter h3 {
-        font-size: 10px;
+        font-size: 14px;
         font-weight: 200;
 
     }
 
     .cardFooter h4 {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .attacks h4 {
         font-size: 14px;
     }
     .attacks h5 {
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: 500;
     }
     .attacks h6 {
         font-size: 10px;
@@ -145,7 +146,9 @@
         font-size: 14px;
     }
     .abilities h5 {
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: 500;
+
     }
     .abilities h6 {
         font-size: 10px;
