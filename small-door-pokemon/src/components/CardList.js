@@ -68,7 +68,6 @@ function CardList() {
 
       <CardModal
         cardData={cardData}
-        setCardData={setCardData}
         setModalOpen={setModalOpen}
         modalOpen={modalOpen}
       />

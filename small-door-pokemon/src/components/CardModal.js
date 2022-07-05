@@ -16,7 +16,7 @@ import {
   footerSection,
 } from "../styles/modal.module.css"
 
-function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
+function CardModal({ modalOpen, setModalOpen, cardData }) {
   //allows users to press Escape to leave the modal
   useEffect(() => {
     document.addEventListener("keydown", detectKeyDown, true)
