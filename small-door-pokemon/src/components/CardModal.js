@@ -191,8 +191,11 @@ function CardModal({ modalOpen, setModalOpen, cardData }) {
               {cardData.resistances &&
                 cardData.resistances.map((resistance, index) => (
                   <div className={footerSection} key={index}>
-                    <h4>Resistance: {resistance.type}</h4>
-                    <h3>{resistance.value}</h3>
+                    <h4>Resistance: </h4>
+                    <h3>
+                      {" "}
+                      {resistance.type} {resistance.value}
+                    </h3>
                   </div>
                 ))}
               {cardData.retreatCost && (
