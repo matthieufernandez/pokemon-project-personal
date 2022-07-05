@@ -49,15 +49,18 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
                 src={cardData.images.small}
                 alt={"an image of the card: " + cardData.name}
               />
-              <div className={abilities}>
-                {cardData.rules &&
-                  cardData.rules.map(rule => (
-                    <p className={cardInfoSection}>{rule}</p>
-                  ))}
-                {cardData.flavortext && (
-                  <p className={cardFlavorText}>{cardData.flavortext}</p>
-                )}
-              </div>
+
+              {cardData.rules &&
+                cardData.rules.map((rule, index) => (
+                  <div className={abilities}>
+                    <p className={cardInfoSection} key={index}>
+                      {rule}
+                    </p>
+                  </div>
+                ))}
+              {cardData.flavortext && (
+                <p className={cardFlavorText}>{cardData.flavortext}</p>
+              )}
             </div>
           </div>
         )}
@@ -121,11 +124,11 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
               </div>
               <div className={nameSection}>
                 {cardData.types &&
-                  cardData.types.map(type => (
-                    <>
+                  cardData.types.map((type, index) => (
+                    <div key={index}>
                       <h6>Type: </h6>
                       <h4>{type}</h4>
-                    </>
+                    </div>
                   ))}
               </div>
               {cardData.evolvesFrom && (
@@ -150,13 +153,13 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
               <div className={cardInfoSection}>
                 {cardData.rules &&
                   cardData.rules.map((rule, index) => (
-                    <div className={abilities}>
-                      <h5 key={index}>{rule}</h5>
+                    <div className={abilities} key={index}>
+                      <h5>{rule}</h5>
                     </div>
                   ))}
                 {cardData.abilities &&
                   cardData.abilities.map((ability, index) => (
-                    <div key={index} className={abilities}>
+                    <div className={abilities} key={index}>
                       {ability.name && (
                         <h4 className="abilityName">Ability: {ability.name}</h4>
                       )}
@@ -179,15 +182,18 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
             </div>
             <div className={cardFooter}>
               {cardData.weaknesses &&
-                cardData.weaknesses.map(weakness => (
-                  <div className={footerSection}>
-                    <h4>Weakness: {weakness.type}</h4>
-                    <h3>{weakness.value}</h3>
+                cardData.weaknesses.map((weakness, index) => (
+                  <div className={footerSection} key={index}>
+                    <h4>Weakness:</h4>
+                    <h3>
+                      {" "}
+                      {weakness.type} {weakness.value}
+                    </h3>
                   </div>
                 ))}
               {cardData.resistances &&
-                cardData.resistances.map(resistance => (
-                  <div className={footerSection}>
+                cardData.resistances.map((resistance, index) => (
+                  <div className={footerSection} key={index}>
                     <h4>Resistance: {resistance.type}</h4>
                     <h3>{resistance.value}</h3>
                   </div>

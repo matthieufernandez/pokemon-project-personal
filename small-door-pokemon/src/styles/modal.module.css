@@ -10,6 +10,81 @@
     }
 
     .cardImage {
+        max-width: 300px;
+        object-fit: contain;
+        align-self: center;
+    }
+
+    .cardMain {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardHeader {
+        gap: 15px;
+    }
+
+    .cardHeader h2 {
+        font-size: 25px;
+    }
+
+    .cardHeader h4 {
+        font-size: 22px;
+        font-weight: 200;
+    }
+    .cardHeader h6 {
+        font-size: 18px;
+    }
+
+    .cardFooter {
+        font-size: 10px;
+        font-weight: 200;
+    }
+
+    .cardFooter h3 {
+         font-size: 22px;
+        font-weight: 200;
+
+    }
+
+    .cardFooter h4 {
+        font-size: 20px;
+    }
+
+    .attacks h4 {
+        font-size: 28px;
+    }
+    .attacks h5 {
+        font-size: 24px;
+    }
+    .attacks h6 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .abilities h4 {
+        font-size: 28px;
+    }
+    .abilities h5 {
+        font-size: 24px;
+    }
+    .abilities h6 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .modal {
+    position: fixed;
+    max-height: 80%;
+    min-width: 70%;
+    overflow-y: auto;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+    }
+
+    .cardImage {
         max-width: 200px;
         object-fit: contain;
         align-self: center;
@@ -28,6 +103,10 @@
         font-size: 12px;
     }
 
+    .cardHeader h6 {
+        font-size: 12px;
+    }
+
     .cardHeader h4 {
         font-size: 10px;
         font-weight: 200;
@@ -37,7 +116,41 @@
         font-size: 10px;
     }
 
+    .cardFooter {
+        font-size: 10px;
+        font-weight: 200;
+    }
 
+    .cardFooter h3 {
+        font-size: 10px;
+        font-weight: 200;
+
+    }
+
+    .cardFooter h4 {
+        font-size: 8px;
+    }
+
+    .attacks h4 {
+        font-size: 14px;
+    }
+    .attacks h5 {
+        font-size: 12px;
+    }
+    .attacks h6 {
+        font-size: 10px;
+        font-weight: 600;
+    }
+    .abilities h4 {
+        font-size: 14px;
+    }
+    .abilities h5 {
+        font-size: 12px;
+    }
+    .abilities h6 {
+        font-size: 10px;
+        font-weight: 600;
+    }
 }
 
 .modal {
@@ -161,6 +274,7 @@
     background-color: rgb(196, 22, 123, .8);
     padding: 10px;
     border-radius: 5px;
+    min-width: 95%
 }
 
 .attacks {
@@ -172,6 +286,8 @@
 .attacks h5 {
     margin-top: 10px;
     font-weight: 200;
+    min-width: 95%;
+
 }
 
 .abilities {
@@ -179,6 +295,7 @@
     background-color: rgba(196, 22, 124, 0.241);
     border-radius: 5px;
     align-self: center;
+    min-width: 95%;
 }
 
 .abilities h4 {
