@@ -14,6 +14,7 @@ import {
   attacks,
   abilities,
   footerSection,
+  energyRules,
 } from "../styles/modal.module.css"
 
 function CardModal({ modalOpen, setModalOpen, cardData }) {
@@ -50,10 +51,8 @@ function CardModal({ modalOpen, setModalOpen, cardData }) {
 
               {cardData.rules &&
                 cardData.rules.map((rule, index) => (
-                  <div className={abilities}>
-                    <p className={cardInfoSection} key={index}>
-                      {rule}
-                    </p>
+                  <div key={index}>
+                    <p className={energyRules}>{rule}</p>
                   </div>
                 ))}
               {cardData.flavortext && (
