@@ -17,10 +17,10 @@ import {
 } from "../styles/modal.module.css"
 
 function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
+  //allows users to press Escape to leave the modal
   useEffect(() => {
     document.addEventListener("keydown", detectKeyDown, true)
   })
-
   function detectKeyDown(e) {
     if (e.key === "Escape") {
       setModalOpen(false)
@@ -28,8 +28,6 @@ function CardModal({ modalOpen, setModalOpen, cardData, setCardData }) {
   }
 
   if (!modalOpen) return null
-
-  //trainer cards can have attacks
 
   return (
     <>

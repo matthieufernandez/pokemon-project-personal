@@ -42,10 +42,6 @@ function CardList() {
     setCardData(card)
   }
 
-  useEffect(() => {
-    console.log(cardData)
-  }, [cardData])
-
   return (
     <>
       {cards.length < 60 ? (
@@ -79,11 +75,5 @@ function CardList() {
     </>
   )
 }
-
-// const CardsWrapper = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-// `
 
 export default CardList
