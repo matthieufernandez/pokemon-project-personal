@@ -317,11 +317,13 @@
     font-weight: 200;
 }
 
-.energyRules {
+.energyRulesArea {
     display: flex;
     flex-direction: column;
+}
+
+.energyRules {
     padding: 10px;
     background-color: rgba(196, 22, 124, 0.241);
     border-radius: 5px;
-    min-width: 95%;
 }

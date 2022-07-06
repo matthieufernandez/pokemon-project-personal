@@ -15,6 +15,7 @@ import {
   abilities,
   footerSection,
   energyRules,
+  energyRulesArea,
 } from "../styles/modal.module.css"
 
 function CardModal({ modalOpen, setModalOpen, cardData }) {
@@ -48,13 +49,16 @@ function CardModal({ modalOpen, setModalOpen, cardData }) {
                 src={cardData.images.small}
                 alt={"an image of the card: " + cardData.name}
               />
-
-              {cardData.rules &&
-                cardData.rules.map((rule, index) => (
-                  <div key={index}>
-                    <p className={energyRules}>{rule}</p>
-                  </div>
-                ))}
+              {cardData.rules && (
+                <div className={energyRulesArea}>
+                  {cardData.rules &&
+                    cardData.rules.map((rule, index) => (
+                      <div key={index}>
+                        <p className={energyRules}>{rule}</p>
+                      </div>
+                    ))}
+                </div>
+              )}
               {cardData.flavortext && (
                 <p className={cardFlavorText}>{cardData.flavortext}</p>
               )}
