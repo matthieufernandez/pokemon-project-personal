@@ -319,6 +319,7 @@
 
 .energyRules {
     display: flex;
+    flex-direction: column;
     padding: 10px;
     background-color: rgba(196, 22, 124, 0.241);
     border-radius: 5px;
