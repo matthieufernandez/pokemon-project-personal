@@ -42,6 +42,10 @@ function CardList() {
     setCardData(card)
   }
 
+  useEffect(() => {
+    console.log(cardData)
+  }, [cardData])
+
   return (
     <>
       {cards.length < 60 ? (

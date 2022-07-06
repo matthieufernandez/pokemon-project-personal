@@ -85,7 +85,9 @@ function CardModal({ modalOpen, setModalOpen, cardData }) {
               <div className={cardInfoSection}>
                 <div className={abilities}>
                   {cardData.rules.map((rule, index) => (
-                    <h5 key={index}>{rule}</h5>
+                    <h5 style={{ marginBottom: "10px" }} key={index}>
+                      {rule}
+                    </h5>
                   ))}
                 </div>
                 {cardData.abilities &&
@@ -177,34 +179,36 @@ function CardModal({ modalOpen, setModalOpen, cardData }) {
                 )}
               </div>
             </div>
-            <div className={cardFooter}>
-              {cardData.weaknesses &&
-                cardData.weaknesses.map((weakness, index) => (
-                  <div className={footerSection} key={index}>
-                    <h4>Weakness:</h4>
-                    <h3>
-                      {" "}
-                      {weakness.type} {weakness.value}
-                    </h3>
+            {!cardData.subtypes.includes("BREAK") && (
+              <div className={cardFooter}>
+                {cardData.weaknesses &&
+                  cardData.weaknesses.map((weakness, index) => (
+                    <div className={footerSection} key={index}>
+                      <h4>Weakness:</h4>
+                      <h3>
+                        {" "}
+                        {weakness.type} {weakness.value}
+                      </h3>
+                    </div>
+                  ))}
+                {cardData.resistances &&
+                  cardData.resistances.map((resistance, index) => (
+                    <div className={footerSection} key={index}>
+                      <h4>Resistance: </h4>
+                      <h3>
+                        {" "}
+                        {resistance.type} {resistance.value}
+                      </h3>
+                    </div>
+                  ))}
+                {cardData.retreatCost && (
+                  <div className={footerSection}>
+                    <h4>Retreat Cost: </h4>
+                    <h3>{cardData.retreatCost.length}</h3>
                   </div>
-                ))}
-              {cardData.resistances &&
-                cardData.resistances.map((resistance, index) => (
-                  <div className={footerSection} key={index}>
-                    <h4>Resistance: </h4>
-                    <h3>
-                      {" "}
-                      {resistance.type} {resistance.value}
-                    </h3>
-                  </div>
-                ))}
-              {cardData.retreatCost && (
-                <div className={footerSection}>
-                  <h4>Retreat Cost: </h4>
-                  <h3>{cardData.retreatCost.length}</h3>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>

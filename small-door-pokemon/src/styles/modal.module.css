@@ -1,12 +1,12 @@
 @media only screen and (max-width: 900px) {
     .modal {
-    position: fixed;
-    max-height: 80%;
-    min-width: 70%;
-    overflow-y: auto;
-    top: 0%;
-    left: 0%;
-    transform: translate(0%, 0%);
+        position: fixed;
+        max-height: 80%;
+        min-width: 70%;
+        overflow-y: auto;
+        top: 0%;
+        left: 0%;
+        transform: translate(0%, 0%);
     }
 
     .cardImage {
@@ -71,18 +71,26 @@
         font-size: 18px;
         font-weight: 600;
     }
+
+    .energyRules {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background-color: rgba(196, 22, 124, 0.241);
+        border-radius: 5px;
+        min-width: 95%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
     .modal {
-    position: fixed;
-    max-height: 80%;
-    min-width: 70%;
-    max-width: 70%;
-    overflow-y: auto;
-    top: 0%;
-    left: 0%;
-    transform: translate(0%, 0%);
+        position: fixed;
+        max-height: 80%;
+        min-width: 70%;
+        overflow-y: auto;
+        top: 0%;
+        left: 0%;
+        transform: translate(0%, 0%);
     }
 
     .cardImage {
@@ -311,7 +319,6 @@
 
 .energyRules {
     display: flex;
-    flex-direction: column;
     padding: 10px;
     background-color: rgba(196, 22, 124, 0.241);
     border-radius: 5px;
