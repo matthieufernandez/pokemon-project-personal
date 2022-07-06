@@ -35,4 +35,9 @@ const Logo = styled.img`
       transform: rotate(360deg);
     }
   }
+
+  @media only screen and (max-width: 900px) {
+    height: 10%;
+    width: 10%;
+  }
 `

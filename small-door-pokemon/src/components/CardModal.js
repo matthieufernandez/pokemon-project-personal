@@ -123,7 +123,7 @@ function CardModal({ modalOpen, setModalOpen, cardData }) {
             <div className={cardHeader}>
               <div className={nameSection}>
                 <h2>{cardData.name}</h2>
-                <h4>HP: {cardData.hp}</h4>
+                {cardData.hp && <h4>HP: {cardData.hp}</h4>}
               </div>
               <div className={nameSection}>
                 {cardData.types &&
