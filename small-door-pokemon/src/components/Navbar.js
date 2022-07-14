@@ -4,7 +4,7 @@ import { top, btn } from "../styles/nav.module.css"
 export default function Navbar() {
   return (
     <nav className={top}>
-      <h1>Small Door Pokémon Project</h1>
+      <h1>Pokémon Card Project</h1>
       <div className="links">
         <a className={btn} href="/">
           Generate New Deck
